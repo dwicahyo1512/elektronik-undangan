@@ -57,7 +57,7 @@
                                  <td><?= date('d/m/Y', strtotime($value->date_acara)) ?></td>
                                  <td><?= $value->info_acara; ?></td>
                                  <td>
-                                     <a href="" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                                     <a href="<?= site_url('acara/edit/'.$value->id_acara) ?>" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
                                      <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                                  </td>
                              </tr>
