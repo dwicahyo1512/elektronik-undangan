@@ -18,6 +18,7 @@ use CodeIgniter\HTTP\ResponseInterface;
  */
 class ResourcePresenter extends BaseResource
 {
+    protected $helpers = ['custom'];
     /**
      * Present a view of resource objects
      *

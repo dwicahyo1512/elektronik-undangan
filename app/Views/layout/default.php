@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
- 
+
     <?= $this->renderSection('title') ?>
     <!-- General CSS Files -->
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
@@ -13,10 +13,20 @@
     <link rel="stylesheet" href="<?= base_url() ?>/template/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
 
     <!-- CSS Libraries -->
+    <link rel="stylesheet" href="<?= base_url() ?>/template/node_modules/bootstrap-daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/template/node_modules/summernote/dist/summernote-bs4.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/template/node_modules/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/template/node_modules/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/template/node_modules/selectric/public/selectric.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/template/node_modules/bootstrap-timepicker/css/bootstrap-timepicker.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/template/node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="<?= base_url() ?>/template/assets/css/style.css">
     <link rel="stylesheet" href="<?= base_url() ?>/template/assets/css/components.css">
+
+    <!-- datatable -->
+    <link rel="stylesheet" href="<?= base_url() ?>/template/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
 </head>
 
 <body>
@@ -220,11 +230,11 @@
                     </li>
                     <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                             <img alt="image" src="<?= base_url() ?>/template/assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
-                            <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div>
+                            <div class="d-sm-none d-lg-inline-block"><?= userLogin()->nama_panggilan ?></div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <div class="dropdown-title">Logged in 5 min ago</div>
-                            <a href="features-profile.html" class="dropdown-item has-icon">
+                            <a href="<?= site_url('profile') ?>" class="dropdown-item has-icon">
                                 <i class="far fa-user"></i> Profile
                             </a>
                             <a href="features-activities.html" class="dropdown-item has-icon">
@@ -234,7 +244,7 @@
                                 <i class="fas fa-cog"></i> Settings
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item has-icon text-danger">
+                            <a href="<?= site_url('auth/logout') ?>" class="dropdown-item has-icon text-danger" id="logout" data-confirm="Logout? | yakin keluar dari aplikasi" data-confirm-yes="returnLogout()">
                                 <i class="fas fa-sign-out-alt"></i> Logout
                             </a>
                         </div>
@@ -254,7 +264,7 @@
                     </ul>
 
                     <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
-                        <a href="" class="btn btn-primary btn-lg btn-block btn-icon-split">
+                        <a href="<?= site_url('pricing') ?>" class="btn btn-primary btn-lg btn-block btn-icon-split">
                             <i class="fas fa-rocket"></i> Upgrade to Pro
                         </a>
                     </div>
@@ -276,22 +286,39 @@
         </div>
     </div>
 
+
     <!-- General JS Scripts -->
     <script src="<?= base_url() ?>/template/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="<?= base_url() ?>/template/node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="<?= base_url() ?>/template/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="<?= base_url() ?>/template/node_modules/jquery.nicescroll/dist/jquery.nicescroll.min.js"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
     <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
+    <script src="<?= base_url() ?>/template/node_modules/moment/min/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script> -->
     <script src="<?= base_url() ?>/template/assets/js/stisla.js"></script>
-
+    <!-- datatable -->
+    <script src="<?= base_url() ?>/template/node_modules/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="<?= base_url() ?>/template/node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
     <!-- JS Libraies -->
+    <script src="<?= base_url() ?>/template/node_modules/summernote/dist/summernote-bs4.js"></script>
+    <script src="<?= base_url() ?>/template/node_modules/cleave.js/dist/cleave.min.js"></script>
+    <script src="<?= base_url() ?>/template/node_modules/cleave.js/dist/addons/cleave-phone.us.js"></script>
+    <script src="<?= base_url() ?>/template/node_modules/jquery-pwstrength/jquery.pwstrength.min.js"></script>
+    <script src="<?= base_url() ?>/template/node_modules/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="<?= base_url() ?>/template/node_modules/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+    <script src="<?= base_url() ?>/template/node_modules/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+    <script src="<?= base_url() ?>/template/node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+    <script src="<?= base_url() ?>/template/node_modules/select2/dist/js/select2.full.min.js"></script>
+    <script src="<?= base_url() ?>/template/node_modules/selectric/public/jquery.selectric.min.js"></script>
+
 
     <!-- Template JS File -->
     <script src="<?= base_url() ?>/template/assets/js/scripts.js"></script>
     <script src="<?= base_url() ?>/template/assets/js/custom.js"></script>
+    <script>
+
+    </script>
 
     <!-- Page Specific JS File -->
 </body>

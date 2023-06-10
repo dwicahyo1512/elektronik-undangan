@@ -20,30 +20,34 @@
              <div class="card-header">
                  <div class="card-body">
 
-                     <form action="<?= site_url('acara' . $acara->id_acara) ?>" method="post" autocomplete="off" class="needs-validation was-validated" novalidate="">
+                     <form action="<?= site_url('acara/' . $acara->id_acara) ?>" method="post" autocomplete="off" novalidate="">
                          <?= csrf_field() ?>
-
+                         <input type="hidden" name="_method" value="PUT">
                          <div class="card-header">
                              <h4> Edit Acara</h4>
                          </div>
                          <div class="card-body">
                              <div class="form-group">
                                  <label>Name Acara</label>
-                                 <input name="nama_acara" value="<?= $acara->nama_acara; ?>" type="text" class="form-control" required="">
-                                 <div class="invalid-feedback">
-                                     Apa Nama Acara Mu?
-                                 </div>
+                                 <input name="nama_acara" value="<?= old('nama_acara', $acara->nama_acara) ?>" type="text" class="form-control <?= session('errors.nama_acara') ? 'is-invalid' : null ?>">
+                                 <?php if (session('errors.nama_acara')) : ?>
+                                     <div class="invalid-feedback">
+                                         <?= session('errors.nama_acara') ?>
+                                     </div>
+                                 <?php endif ?>
                              </div>
                              <div class="form-group">
                                  <label>Tanggal</label>
-                                 <input name="date_acara" type="date" class="form-control" required="">
-                                 <div class="invalid-feedback">
-                                     Kapan Acara Mu?.
-                                 </div>
+                                 <input name="date_acara" value="<?= old('date_acara', $acara->date_acara) ?>" type="date" class="form-control <?= session('errors.date_acara') ? 'is-invalid' : null ?>">
+                                 <?php if (session('errors.date_acara')) : ?>
+                                     <div class="invalid-feedback">
+                                         <?= session('errors.date_acara') ?>
+                                     </div>
+                                 <?php endif ?>
                              </div>
                              <div class="form-group mb-0">
                                  <label>info</label>
-                                 <textarea name="info_acara" class="form-control"></textarea>
+                                 <textarea name="info_acara" class="form-control"><?= $acara->info_acara; ?></textarea>
                              </div>
                          </div>
                          <div class="card-footer text-right">

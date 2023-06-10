@@ -22,6 +22,12 @@ class Acara extends Migration
             'date_acara' => [
                 'type'       => 'DATE',
             ],
+            'time_acara' => [
+                'type'       => 'TIME',
+            ],
+            'selesai_acara' => [
+                'type'       => 'TIME',
+            ],
             'info_acara' => [
                 'type' => 'TEXT',
                 'null' => true,
