@@ -10,7 +10,7 @@
   <meta content="" name="keywords" />
 
   <!-- Favicons -->
-  <link rel="stylesheet" href=" <?= base_url(); ?>assetsimg/favicon.png" rel="icon" />
+  <link rel="stylesheet" href=" <?= base_url(); ?>favicon.ico" rel="icon" />
   <link rel="stylesheet" href="<?= base_url(); ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 
   <!-- Google Fonts -->
@@ -40,7 +40,7 @@
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="/" class="logo d-flex align-items-center">
         <img src="<?= base_url(); ?>assets/img/logo.png" alt="" />
         <span>E-Undangan</span>
       </a>
@@ -757,7 +757,7 @@
       <div class="container">
         <div class="row gy-4">
           <div class="col-lg-7 col-md-12 footer-info">
-            <a href="index.html" class="logo d-flex align-items-center">
+            <a href="/" class="logo d-flex align-items-center">
               <img src="<?= base_url(); ?>assets/img/logo.png" alt="" />
               <span>E-Undangan</span>
             </a>
