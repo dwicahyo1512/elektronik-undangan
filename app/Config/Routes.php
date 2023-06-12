@@ -65,14 +65,6 @@ $routes->group('superadmin', ['filter' => 'role:superadmin'], static function ($
     $routes->presenter('blog', ['controller' => 'blog']);
     $routes->presenter('produk', ['controller' => 'produk']);
     $routes->presenter('hadiah', ['controller' => 'hadiah']);
-    // ACARA
-    $routes->get('acara', 'Acara::index');
-    $routes->get('acara/add', 'Acara::create');
-    $routes->post('acara', 'Acara::store');
-    $routes->get('acara/edit/(:any)', 'Acara::edit/$1');
-    $routes->put('acara/(:any)', 'Acara::update/$1');
-    $routes->delete('acara/(:segment)', 'Acara::destroy/$1');
-
 });
 
 $routes->group('admin', ['filter' => 'role:admin,superadmin'], static function ($routes) {
@@ -97,6 +89,15 @@ $routes->group('user', static function ($routes) {
     $routes->get('undangan/export', 'Undangan::export', ['filter' => 'isLoggedIn']);
     $routes->post('undangan/import', 'Undangan::import', ['filter' => 'isLoggedIn']);
     $routes->resource('undangan', ['filter' => 'isLoggedIn']);
+    // ACARA
+    $routes->get('acara', 'Acara::index');
+    $routes->get('acara/add', 'Acara::create');
+    $routes->post('acara/step2', 'Acara::step2');
+    $routes->post('acara/step3', 'Acara::step3');
+    $routes->post('acara/finish', 'Acara::finish');
+    $routes->get('acara/edit/(:any)', 'Acara::edit/$1');
+    $routes->put('acara/(:any)', 'Acara::update/$1');
+    $routes->delete('acara/(:segment)', 'Acara::destroy/$1');
 });
 
 // $routes->get('login', 'Auth::login');

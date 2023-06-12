@@ -56,7 +56,7 @@
           <li><a href="blog.html">Blog</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
           <li>
-            <a class="getstarted scrollto" href="#about">Get Started</a>
+            <a class="getstarted scrollto" href="<?= base_url('login'); ?>">Get Started</a>
           </li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -79,7 +79,7 @@
           </h2>
           <div data-aos="fade-up" data-aos-delay="600">
             <div class="text-center text-lg-start">
-              <a href="#about" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+              <a href="<?= base_url('login'); ?>" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
                 <span>Get Started</span>
                 <i class="bi bi-arrow-right"></i>
               </a>
@@ -530,10 +530,10 @@
               <div class="member-img">
                 <img src="<?= base_url(); ?>assets/img/team/team-1.jpg" class="img-fluid" alt="" />
                 <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
+                  <a href="https://twitter.com/MDwiCahyo15" class="twitter"><i class="bi bi-twitter"></i></a>
+                  <a href="https://web.facebook.com/cahyofc.dwi" class="facebook"><i class="bi bi-facebook"></i></a>
+                  <a href="https://www.instagram.com/m_dwi_cahyo15/" class="instagram"><i class="bi bi-instagram"></i></a>
+                  <a href="https://www.linkedin.com/in/muhamad-dwi-cahyo-94828625a/" class="linkedin"><i class="bi bi-linkedin"></i></a>
                 </div>
               </div>
               <div class="member-info">

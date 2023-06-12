@@ -22,8 +22,66 @@ class Acara extends BaseController
     public function create()
     {
         $data['title'] = 'Acara';
-        return view('acara/add', $data );
+        
+        // Tampilkan view step 1
+        return view('acara/wizard/step1',$data);
     }
+
+    public function step2()
+    {
+        $validation =  \Config\Services::validation();
+        $isValid = $this->validate([
+            'nama_acara' => [
+                'rules'  => 'required|min_length[3]',
+                'errors' => [
+                    'required' => 'Nama acara tidak boleh kosong',
+                    'min_length' => 'Nama kurang panjang minimal 3 huruf',
+                ],
+            ],
+            'date_acara' => [
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => 'tanggal tidak boleh kosong',
+                ],
+            ],
+        ]);
+        if (!$isValid) {
+            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
+        }
+        // Simpan data dari step 1
+        $data = [
+            'nama_acara' => $this->request->getVar('nama_acara'),
+        ];
+        $data['title'] = 'Acara';
+        session()->set('step1Data', $data);
+        return view('acara/wizard/step2',$data);
+    }
+    
+    public function step3()
+    {
+        $data['title'] = 'Acara';
+        // Validasi input pada step 2
+        $validationRules = [
+            'nama_acara' => 'required',
+        ];
+
+        if (!$this->validate($validationRules)) {
+            // Jika validasi gagal, kembali ke step 2
+            return redirect()->to('/acara/step2')->withInput()->with('error', 'Please fill in all fields.');
+        }
+
+        // Dapatkan data dari step 1
+        $step1Data = session()->get('step1Data');
+
+        // Simpan data dari step 2
+        $data = array_merge($step1Data, [
+            'field3' => $this->request->getVar('field3'),
+        ]);
+        session()->set('step2Data', $data);
+
+        return view('acara/wizard/step3',$data);
+    }
+
 
     public function store()
     {

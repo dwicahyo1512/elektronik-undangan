@@ -30,7 +30,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <a href="<?= base_url('superadmin/acara/add'); ?>" class="btn btn-primary btn-icon icon-left" style="border-radius: 5px;">
+                            <a href="<?= base_url('user/acara/add'); ?>" class="btn btn-primary btn-icon icon-left" style="border-radius: 5px;">
                                 <i class="fas fa-plus"> Buat Acara</i>
                             </a>
                         </div>

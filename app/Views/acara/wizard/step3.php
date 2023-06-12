@@ -17,11 +17,12 @@
                         <div class="card-header">
                             <h4>Buat Acara</h4>
                         </div>
+                        <!-- isi 3 -->
                         <div class="card-body">
                             <div class="row mt-4">
                                 <div class="col-12 col-lg-8 offset-lg-2">
                                     <div class="wizard-steps">
-                                        <div class="wizard-step wizard-step-active">
+                                        <div class="wizard-step">
                                             <div class="wizard-step-icon">
                                                 <i class="	fas fa-address-book"></i>
                                             </div>
@@ -37,7 +38,7 @@
                                                 thema Acara
                                             </div>
                                         </div>
-                                        <div class="wizard-step">
+                                        <div class="wizard-step  wizard-step-active">
                                             <div class="wizard-step-icon">
                                                 <i class="fas fa-server"></i>
                                             </div>
@@ -75,7 +76,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group row align-items-center">
                                         <label class="col-md-4 text-md-right text-left">Waktu Acara</label>
                                         <div class="col-lg-4 col-md-6">
@@ -105,9 +105,7 @@
                                     <div class="form-group row">
                                         <div class="col-md-4"></div>
                                         <div class="col-lg-4 col-md-6 text-right">
-                                            <button type="submit" class="btn btn-success"><i class="fas fa-paper-plane"></i>Submit</button>
-                                            <button type="reset" class="btn btn-secondary">Reset</button>
-                                            <a href="#" class="btn btn-icon icon-right btn-primary">Next <i class="fas fa-arrow-right"></i></a>
+                                            <button type="submit" class="btn btn-success">Submit <i class="fas fa-arrow-right"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -121,59 +119,6 @@
 </div>
 
 
+
+
 <?= $this->endSection() ?>
-<!-- 
- <section class="section">
-     <div class="section-header">
-         <div class="section-header-button">
-             <a href="<?= site_url('acara') ?>" class="btn btn-primary"><i class="fas fa-arrow-left"></i></a>
-         </div>
-         <h1>create Acara</h1>
-     </div>
-
-     <div class="section-body">
-
-         <div class="card">
-             <div class="card-header">
-                 <div class="card-body">
-
-                     <form action="<?= site_url('acara') ?>" method="post" autocomplete="off" novalidate="">
-                         <?= csrf_field() ?>
-                         <div class="card-header">
-                             <h4> buat Acara</h4>
-                         </div>
-                         <div class="card-body">
-                             <div class="form-group">
-                                 <label>Name Acara</label>
-                                 <input name="nama_acara" type="text" value="<?= old('nama_acara') ?>" class="form-control <?= session('errors.nama_acara') ? 'is-invalid' : null ?>">
-                                 <?php if (session('errors.nama_acara')) : ?>
-                                     <div class="invalid-feedback">
-                                         <?= session('errors.nama_acara') ?>
-                                     </div>
-                                 <?php endif ?>
-                             </div>
-                             <div class="form-group">
-                                 <label>Tanggal</label>
-                                 <input name="date_acara" type="date" value="<?= old('date_acara') ?>" class="form-control <?= (session('errors.date_acara')) ? 'is-invalid' : null ?>">
-                                 <?php if (session('errors.date_acara')) : ?>
-                                     <div class="invalid-feedback">
-                                         <?= session('errors.date_acara') ?>
-                                     </div>
-                                 <?php endif ?>
-                             </div>
-                             <div class="form-group mb-0">
-                                 <label>info</label>
-                                 <textarea name="info_acara" class="form-control"></textarea>
-                             </div>
-                         </div>
-                         <div class="card-footer text-right">
-                             <button type="submit" class="btn btn-success"><i class="fas fa-paper-plane"></i>Submit</button>
-                             <button type="reset" class="btn btn-secondary">Reset</button>
-                         </div>
-                     </form>
-                 </div>
-             </div>
-         </div>
-
-     </div>
- </section> -->
