@@ -1,5 +1,5 @@
 
-![Logo](./documentation/logo_large.png)
+![Logo](./documentation/logo_large.jpg)
 
 
 ## Authors
