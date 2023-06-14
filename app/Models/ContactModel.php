@@ -11,14 +11,14 @@ class ContactModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = true;
     protected $useTimestamps    = true;
-    protected $allowedFields    = ['nama_contact', 'nama_alias',    'phone',    'email',    'address',    'info_contact',    'id_group'];
+    protected $allowedFields    = ['nama_contact', 'nama_alias',    'phone',    'email',    'address',    'info_contact',    'id_grp'];
 
     protected $validationRules = [
-        'id_group'     => 'required',
+        'id_grp'     => 'required',
         'nama_contact'        => 'required|min_length[3]',
     ];
     protected $validationMessages = [
-        'id_group' => [
+        'id_grp' => [
             'required' => 'Grup belum dipilih',
         ],
         'nama_contact' => [
@@ -30,7 +30,7 @@ class ContactModel extends Model
     function getAll()
     {
         $builder = $this->db->table('contacts');
-        $builder->join('groups', 'groups.id_group = contacts.id_group');
+        $builder->join('grps', 'grps.id_grp = contacts.id_grp');
         $query   = $builder->get();
         return $query->getResult();
     }
@@ -38,14 +38,14 @@ class ContactModel extends Model
     function getPaginated($num, $keyword = null)
     {
         $builder = $this->builder();
-        $builder->join('groups', 'groups.id_group = contacts.id_group');
+        $builder->join('grps', 'grps.id_grp = contacts.id_grp');
         if ($keyword != '') {
             $builder->like('nama_contact' , $keyword);
             $builder->orLike('nama_alias' , $keyword);
             $builder->orLike('address' , $keyword);
             $builder->orLike('phone' , $keyword);
             $builder->orLike('email' , $keyword);
-            $builder->orLike('nama_group' , $keyword);
+            $builder->orLike('nama_grp' , $keyword);
         }
         return [
             'contacts' => $this->paginate($num),

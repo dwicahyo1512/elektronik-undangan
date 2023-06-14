@@ -64,14 +64,19 @@
                <li <?= ($getSegment2 === 'hadiah_pengguna') ? 'class="active"' : '' ?>>
                     <a class="nav-link" href="<?= route_to('hadiah_pengguna'); ?>"><i class="fas fa-box-open"></i> <span>Klaim Hadiah Pengguna</span></a>
                </li>
-               <li><a class="nav-link" href="<?= site_url('acara') ?>"><i class="far fa-calendar"></i> <span>Acara</span></a></li>
+               <li <?= ($getSegment2 === 'acara') ? 'class="active"' : '' ?>><a class="nav-link" href="<?= base_url('user/acara') ?>"><i class="far fa-calendar"></i> <span>Acara</span></a></li>
                <li class="nav-item dropdown">
                     <a href="#" class="nav-link has-dropdown"><i class="far fa-address-book"></i><span>Kontak</span></a>
                     <ul class="dropdown-menu">
-                         <li><a class="nav-link" href="<?= site_url('contacts') ?>">Kontak Saya</a></li>
+                         <li <?= ($getSegment2 === 'grps') ? 'class="active"' : '' ?>>
+                              <a class="nav-link" href="<?= base_url('user/grps') ?>">Grup Kontak</a>
+                         </li>
+                         <li <?= ($getSegment2 === 'contacts') ? 'class="active"' : '' ?>>
+                              <a class="nav-link" href="<?= base_url('user/contacts') ?>">Kontak Saya</a>
+                         </li>
                     </ul>
                </li>
-               <li class="nav-item dropdown">
+               <li class="nav-item dropdown" hidden>
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="far fa-envelope"></i> <span>undangan</span></a>
                     <ul class="dropdown-menu">
                          <li><a class="nav-link" href="<?= site_url('undangan') ?>">saya mengundang</a></li>

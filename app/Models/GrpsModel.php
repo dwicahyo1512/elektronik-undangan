@@ -5,7 +5,7 @@ namespace App\Models;
 use CodeIgniter\Model;
 
 
-class GrpModel extends Model
+class GrpsModel extends Model
 {
     // protected $DBgrp          = 'default';
     protected $table            = 'grps';

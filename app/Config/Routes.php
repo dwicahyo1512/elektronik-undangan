@@ -82,10 +82,18 @@ $routes->group('user', static function ($routes) {
     $routes->presenter('reservasi_pengguna', ['controller' => 'pesanan']);
     $routes->get('faktur_cetak/(:num)', 'User::cetak_reservasi/$1', ['as' => 'cetak_reservasi_pengguna']);
     // CONTACT
+    $routes->get('Contacts', 'contacts::index', ['as' => 'Group']);
     $routes->get('contacts/export', 'Contacts::export', ['filter' => 'isLoggedIn']);
     $routes->post('contacts/import', 'Contacts::import', ['filter' => 'isLoggedIn']);
-    $routes->resource('contacts', ['filter' => 'isLoggedIn']);
-    // UNDANGAN
+    $routes->resource('contacts', ['controller' => 'contacts']);
+    //GROUP
+    $routes->get('grps/trash', 'grps::trash');
+    $routes->get('grps/restore/(:any)', 'grps::restore/$1');
+    $routes->get('grps/restore', 'grps::restore');
+    $routes->delete('grps/delete2/(:any)', 'grps::delete2/$1');
+    $routes->delete('grps/delete2', 'grps::delete2');
+    $routes->presenter('grps', ['controller' => 'Grps']);
+   // UNDANGAN
     $routes->get('undangan/export', 'Undangan::export', ['filter' => 'isLoggedIn']);
     $routes->post('undangan/import', 'Undangan::import', ['filter' => 'isLoggedIn']);
     $routes->resource('undangan', ['filter' => 'isLoggedIn']);
@@ -99,46 +107,6 @@ $routes->group('user', static function ($routes) {
     $routes->put('acara/(:any)', 'Acara::update/$1');
     $routes->delete('acara/(:segment)', 'Acara::destroy/$1');
 });
-
-// $routes->get('login', 'Auth::login');
-// $routes->get('login/register', 'Auth::register');
-// $routes->post('register', 'Auth::registerProcess');
-
-// $routes->get('login/forgot', 'Auth::forgot');
-// $routes->post('forgot_password', 'Auth::forgot_password');
-
-// $routes->get('forgot_password/(:any)', 'Auth::pwToken/$1');
-// $routes->put('forgot_password/proses/(:any)', 'Auth::Processforgotpw/$1');
-
-// $routes->get('/', 'Home::index');
-// $routes->addRedirect('/', 'home');
-
-// $routes->get('profile', 'Profile::index');
-// $routes->post('profile/edit', 'Profile::update');
-
-// $routes->get('acara', 'Acara::index');
-// $routes->get('acara/add', 'Acara::create');
-// $routes->post('acara', 'Acara::store');
-// $routes->get('acara/edit/(:any)', 'Acara::edit/$1');
-// $routes->put('acara/(:any)', 'Acara::update/$1');
-// $routes->delete('acara/(:segment)', 'Acara::destroy/$1');
-
-// $routes->get('groups/trash', 'Groups::trash');
-// $routes->get('groups/restore/(:any)', 'Groups::restore/$1');
-// $routes->get('groups/restore', 'Groups::restore');
-// $routes->delete('groups/delete2/(:any)', 'Groups::delete2/$1');
-// $routes->delete('groups/delete2', 'Groups::delete2');
-// $routes->presenter('groups', ['filter' => 'isLoggedIn']);
-
-
-// $routes->get('contacts/export', 'Contacts::export', ['filter' => 'isLoggedIn']);
-// $routes->post('contacts/import', 'Contacts::import', ['filter' => 'isLoggedIn']);
-// $routes->resource('contacts', ['filter' => 'isLoggedIn']);
-
-
-// $routes->get('undangan/export', 'Undangan::export', ['filter' => 'isLoggedIn']);
-// $routes->post('undangan/import', 'Undangan::import', ['filter' => 'isLoggedIn']);
-// $routes->resource('undangan', ['filter' => 'isLoggedIn']);
 
 // $routes->get('pricing', 'Pricing::index');
 

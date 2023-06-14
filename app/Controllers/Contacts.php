@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Database\Seeds\Contact;
 use CodeIgniter\RESTful\ResourceController;
-use App\Models\GrpModel;
+use App\Models\GrpsModel;
 use App\Models\ContactModel;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -14,7 +14,7 @@ class Contacts extends ResourceController
     protected $helpers = ['custom'];
     function __construct()
     {
-        $this->grp = new GrpModel;
+        $this->grp = new GrpsModel;
         $this->contact = new ContactModel();
     }
     /**
@@ -26,6 +26,7 @@ class Contacts extends ResourceController
     {
         $keyword = $this->request->getGet('keyword');
         $data = $this->contact->getPaginated(10, $keyword);
+        $data['title'] = 'Contats';
         return view('contact/index', $data);
 
         // $keyword = $this->request->getGet('keyword');
@@ -52,6 +53,7 @@ class Contacts extends ResourceController
     public function new()
     {
         $data['grp'] = $this->grp->findAll();
+        $data['title'] = 'New Contats';
         return view('contact/new', $data);
     }
 
@@ -67,7 +69,7 @@ class Contacts extends ResourceController
         if (!$save) {
             return redirect()->back()->withInput()->with('errors', $this->contact->errors());
         } else {
-            return redirect()->to(site_url('contacts'))->with('success', 'Data Berhasil Disimpan');
+            return redirect()->to(site_url('user/contacts'))->with('success', 'Data Berhasil Disimpan');
         }
     }
 
@@ -82,6 +84,7 @@ class Contacts extends ResourceController
         if (is_object($contact)) {
             $data['contact'] = $contact;
             $data['grp'] = $this->grp->findAll();
+            $data['title'] = 'Edit Contact';
             return view('contact/edit', $data);
         } else {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
@@ -100,7 +103,7 @@ class Contacts extends ResourceController
         if (!$save) {
             return redirect()->back()->withInput()->with('errors', $this->contact->errors());
         } else {
-            return redirect()->to(site_url('contacts'))->with('success', 'Data Berhasil Disimpan');
+            return redirect()->to(site_url('user/contacts'))->with('success', 'Data Berhasil Disimpan');
         }
     }
 

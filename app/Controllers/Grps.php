@@ -3,17 +3,17 @@
 namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourcePresenter;
-use App\Models\grpModel;
+use App\Models\GrpsModel;
 
 
-class grp extends ResourcePresenter
+class Grps extends ResourcePresenter
 {
     // function __construct()
     // {
     //     $this->grp = new grpModel();
     // }
 
-    protected $modelName = 'App\Models\grpModel';
+    protected $modelName = 'App\Models\GrpsModel';
     protected $helpers = ['custom'];
     /**
      * Present a view of resource objects
@@ -22,7 +22,8 @@ class grp extends ResourcePresenter
      */
     public function index()
     {
-        $data['grp'] = $this->model->findAll();
+        $data['title'] = "Group";
+        $data['grps'] = $this->model->findAll();
         return view('grp/index', $data);
     }
 
@@ -44,7 +45,8 @@ class grp extends ResourcePresenter
      */
     public function new()
     {
-        return view('grp/new');
+        $data['title'] = "Group";
+        return view('grp/new', $data);
         //
     }
 
@@ -73,7 +75,7 @@ class grp extends ResourcePresenter
         //cara 1 : name nya sama
         $data = $this->request->getPost();
         $this->model->insert($data);
-        return redirect()->to(site_url('grp'))->with('success', 'Data Berhasil Disimpan');
+        return redirect()->to(site_url('user/grps'))->with('success', 'Data Berhasil Disimpan');
     }
 
     /**
@@ -88,6 +90,7 @@ class grp extends ResourcePresenter
         $grp  = $this->model->where('id_grp', $id)->first();
         if (is_object($grp)) {
             $data['grp'] = $grp;
+            $data['title']='Edit Group';
             return view('grp/edit', $data);
         } else {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
@@ -120,7 +123,7 @@ class grp extends ResourcePresenter
         //cara 1 : name nya sama
         $data = $this->request->getPost();
         $this->model->update($id, $data);
-        return redirect()->to(site_url('grp'))->with('success', 'Data Berhasil Diupdate');
+        return redirect()->to(site_url('user/grps'))->with('success', 'Data Berhasil Diupdate');
         //
     }
 
@@ -147,13 +150,13 @@ class grp extends ResourcePresenter
     {
         // $this->model->where('id_grp', $id)->delete();
         $this->model->delete($id);
-        return redirect()->to(site_url('grp'))->with('success', 'Data Berhasil DiHapus');
+        return redirect()->to(site_url('user/grps'))->with('success', 'Data Berhasil DiHapus');
         //
     }
     public function trash()
     {
         $data['grp'] = $this->model->onlyDeleted()->findAll();
-        return view('grp/trash', $data);
+        return view('user/grp/trash', $data);
     }
 
     public function restore($id = null)
@@ -171,7 +174,7 @@ class grp extends ResourcePresenter
                 ->update();
         }
         if ($this->db->affectedRows() > 0) {
-            return redirect()->to(site_url('grp'))->with('success', 'Data Berhasil Direstore');
+            return redirect()->to(site_url('grps'))->with('success', 'Data Berhasil Direstore');
         }
     }
 
@@ -179,10 +182,10 @@ class grp extends ResourcePresenter
     {
         if ($id != null) {
             $this->model->delete($id, true);
-            return redirect()->to(site_url('grp/trash'))->with('success', 'Data Berhasil Dihapus permanent');
+            return redirect()->to(site_url('user/grps/trash'))->with('success', 'Data Berhasil Dihapus permanent');
         } else {
             $this->model->purgeDeleted();
-            return redirect()->to(site_url('grp/trash'))->with('success', 'Data Trash Berhasil dihapus permanent');
+            return redirect()->to(site_url('user/grps/trash'))->with('success', 'Data Trash Berhasil dihapus permanent');
         }
     }
 }

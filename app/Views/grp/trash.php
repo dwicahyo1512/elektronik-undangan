@@ -11,7 +11,7 @@
      <div class="section-header">
          <h1>Groups</h1>
          <div class="section-header-button">
-             <a href="<?= site_url('groups') ?>" class="btn btn-secondary">Back</a>
+             <a href="<?= site_url('grps') ?>" class="btn btn-secondary">Back</a>
          </div>
      </div>
 
@@ -40,12 +40,12 @@
              <div class="card-header">
                  <h4> Data Grup Kontak - Trash</h4>
                  <div class="card-header-action">
-                     <a href="<?= site_url('groups/restore') ?>" class="btn btn-info">Restore all</a>
-                     <form action="<?= site_url('groups/delete2') ?>" method="post" class="d-inline" onsubmit="return confirm(yakin hapus data?)">
+                     <a href="<?= site_url('grps/restore') ?>" class="btn btn-info">Restore all</a>
+                     <form action="<?= site_url('grps/delete2') ?>" method="post" class="d-inline" onsubmit="return confirm(yakin hapus data?)">
                          <?= csrf_field() ?>
                          <button href="" class="btn btn-danger btn-sm">Delete permanent </button>
                      </form>
-                     <!-- <a href="<?= site_url('groups/delete2') ?>" class="btn btn-danger"><i class="fa fa-trash"> Deleted all Permanent</i></a> -->
+                     <!-- <a href="<?= site_url('grps/delete2') ?>" class="btn btn-danger"><i class="fa fa-trash"> Deleted all Permanent</i></a> -->
                  </div>
              </div>
              <div class="card-body table-responsive">
@@ -57,14 +57,14 @@
                              <th>Info</th>
                              <th>Action</th>
                          </tr>
-                         <?php foreach ($groups as $key => $value) : ?>
+                         <?php foreach ($grps as $key => $value) : ?>
                              <tr>
                                  <td><?= $key + 1; ?></td>
-                                 <td><?= $value->nama_group; ?></td>
-                                 <td><?= $value->info_group; ?></td>
+                                 <td><?= $value->nama_grp; ?></td>
+                                 <td><?= $value->info_grp; ?></td>
                                  <td>
-                                     <a href="<?= site_url('groups/restore/' . $value->id_group) ?>" class="btn btn-info btn-sm">Restore</i></a>
-                                     <form action="<?= site_url('groups/delete2/' . $value->id_group) ?>" method="post" class="d-inline" onsubmit="return confirm(yakin hapus data?)">
+                                     <a href="<?= site_url('grps/restore/' . $value->id_grp) ?>" class="btn btn-info btn-sm">Restore</i></a>
+                                     <form action="<?= site_url('grps/delete2/' . $value->id_grp) ?>" method="post" class="d-inline" onsubmit="return confirm(yakin hapus data?)">
                                          <?= csrf_field() ?>
                                          <button href="" class="btn btn-danger btn-sm">Delete permanent</button>
                                      </form>
