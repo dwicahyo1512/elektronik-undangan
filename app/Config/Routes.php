@@ -94,7 +94,7 @@ $routes->group('user', static function ($routes) {
     $routes->get('acara/add', 'Acara::create');
     $routes->post('acara/step2', 'Acara::step2');
     $routes->post('acara/step3', 'Acara::step3');
-    $routes->post('acara/finish', 'Acara::finish');
+    $routes->post('acara', 'Acara::store');
     $routes->get('acara/edit/(:any)', 'Acara::edit/$1');
     $routes->put('acara/(:any)', 'Acara::update/$1');
     $routes->delete('acara/(:segment)', 'Acara::destroy/$1');

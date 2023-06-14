@@ -7,7 +7,7 @@
             <div class="section-header-back">
                 <a href="<?= base_url('superadmin/kategori'); ?>" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
             </div>
-            <h1>Buat Kategouk</h1>
+            <h1>Buat Acara</h1>
         </div>
 
         <div class="section-body">
@@ -76,6 +76,7 @@
                                 <div class="form-group row">
                                     <div class="col-md-4"></div>
                                     <div class="col-lg-4 col-md-6 text-right">
+                                        <button onclick="" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Kembali</button>
                                         <button type="submit" class="btn btn-success">Submit <i class="fas fa-arrow-right"></i></button>
                                     </div>
                                 </div>
@@ -89,6 +90,8 @@
 </div>
 
 <script>
+  
+
     // Menggunakan JavaScript untuk menangkap perubahan nilai select group
     document.querySelectorAll('input[name="icon-input"]').forEach(function(input) {
         input.addEventListener('change', function() {

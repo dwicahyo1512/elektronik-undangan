@@ -51,7 +51,6 @@
                             <form class="wizard-content mt-2" action="step2" method="post" autocomplete="off" novalidate="">
                                 <?= csrf_field() ?>
                                 <div class="wizard-pane">
-                                   
                                     <div class="form-group row align-items-center">
                                         <label class="col-md-4 text-md-right text-left">Name Acara</label>
                                         <div class="col-lg-4 col-md-6">
@@ -76,33 +75,13 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="form-group row align-items-center">
-                                        <label class="col-md-4 text-md-right text-left">Waktu Acara</label>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend">
-                                                    <div class="input-group-text">
-                                                        <i class="fas fa-clock"></i>
-                                                    </div>
-                                                </div>
-                                                <input type="text" class="form-control timepicker">
-                                                <?php if (session('errors.date_acara')) : ?>
-                                                    <div class="invalid-feedback">
-                                                        <?= session('errors.date_acara') ?>
-                                                    </div>
-                                                <?php endif ?>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
                                     <div class="form-group row">
                                         <label class="col-md-4 text-md-right text-left mt-2">Alamat</label>
                                         <div class="col-lg-4 col-md-6">
                                             <textarea class="form-control" name="info_acara"></textarea>
                                         </div>
                                     </div>
+                                   
                                     <div class="form-group row">
                                         <div class="col-md-4"></div>
                                         <div class="col-lg-4 col-md-6 text-right">

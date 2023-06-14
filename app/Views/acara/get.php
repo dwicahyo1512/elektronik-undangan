@@ -43,6 +43,7 @@
                                             <th>Name</th>
                                             <th>Created At</th>
                                             <th>Info</th>
+                                            <th>jenis acara</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -53,9 +54,10 @@
                                                 <td><?= $value->nama_acara; ?></td>
                                                 <td><?= date('d/m/Y', strtotime($value->date_acara)) ?></td>
                                                 <td><?= $value->info_acara; ?></td>
+                                                <td><?= $value->jenis_acara; ?></td>
                                                 <td>
                                                     <a href="<?= site_url('acara/edit/' . $value->id_acara) ?>" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
-                                                    <form action="<?= site_url('acara/' . $value->id_acara) ?>" method="post" class="d-inline" id="del-<?= $value->id_acara ?>">
+                                                    <form action="<?= site_url('user/acara/' . $value->id_acara) ?>" method="post" class="d-inline" id="del-<?= $value->id_acara ?>">
                                                         <?= csrf_field() ?>
                                                         <input type="hidden" name="_method" value="DELETE">
                                                         <button href="" class="btn btn-danger btn-sm" data-confirm="Hapus Data? | Apakah anda yakin" data-confirm-yes="submitDel(<?= $value->id_acara ?>)"><i class="fas fa-trash"></i></button>
