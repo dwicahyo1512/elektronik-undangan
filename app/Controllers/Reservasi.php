@@ -85,7 +85,7 @@ class Reservasi extends ResourcePresenter
     public function create()
     {
         $hadiahId = 0;
-        $hadiahNotActive = '';
+        $hadiahNotActive = ''; 
         $hadiahIdNotFound = '';
         $potongan_harga = 0;
         // lakukan validasi
@@ -178,6 +178,7 @@ class Reservasi extends ResourcePresenter
                 'potongan_harga' => $potongan_harga,
                 'total_bayar' => $total_bayar,
             ];
+            
             if (!$this->reservasi->update($reservasi_id, $allowUpdate)) {
                 return redirect()->back()->withInput()->with('errors', $this->reservasi->errors());
             }

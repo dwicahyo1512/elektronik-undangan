@@ -96,7 +96,7 @@ $routes->group('user', static function ($routes) {
    // UNDANGAN
     $routes->get('undangan/export', 'Undangan::export', ['filter' => 'isLoggedIn']);
     $routes->post('undangan/import', 'Undangan::import', ['filter' => 'isLoggedIn']);
-    $routes->resource('undangan', ['filter' => 'isLoggedIn']);
+    $routes->resource('undangan', ['controller' => 'undangan']);
     // ACARA
     $routes->get('acara', 'Acara::index');
     $routes->get('acara/add', 'Acara::create');

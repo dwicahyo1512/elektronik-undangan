@@ -97,7 +97,7 @@
 
                <footer class="main-footer">
                     <div class="footer-left">
-                         Copyright &copy; Safiah_Wedding 2023
+                         Copyright &copy; E_Undangan 2023
                     </div>
                     <div class="footer-right">
 

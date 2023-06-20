@@ -76,11 +76,13 @@
                          </li>
                     </ul>
                </li>
-               <li class="nav-item dropdown" hidden>
+               <li class="nav-item dropdown">
                     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="far fa-envelope"></i> <span>undangan</span></a>
                     <ul class="dropdown-menu">
-                         <li><a class="nav-link" href="<?= site_url('undangan') ?>">saya mengundang</a></li>
-                         <li><a class="nav-link" href="layout-transparent.html">saya diundang</a></li>
+                         <li <?= ($getSegment2 === 'undangan') ? 'class="active"' : '' ?>>
+                              <a class="nav-link" href="<?= base_url('user/undangan') ?>">undang</a>
+                         </li>
+                         <li hidden><a class="nav-link" href="layout-transparent.html">saya diundang</a></li>
                     </ul>
                </li>
           </ul>
