@@ -80,10 +80,9 @@
 
           gtag('config', 'UA-94034622-3');
      </script>
-     <!-- /END GA -->
 </head>
 
-<body>
+   <body>
      <div id="app">
           <div class="main-wrapper main-wrapper-1">
                <!-- Top Bar -->
