@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 class Acara extends BaseController
 {
+    protected $db;
     public function index()
     {
         //cara 1 : query builder
@@ -96,7 +97,7 @@ class Acara extends BaseController
                 ];
                 $this->db->table('nikah')->insert($nikahData);
                 if ($this->db->affectedRows() > 0) {
-                    return redirect()->to(site_url('acara'))->with('success', 'Data Berhasil Disimpan');
+                    return redirect()->to(site_url('user/acara'))->with('success', 'Data Berhasil Disimpan');
                 }
             } elseif ($step2Data['icon-input'] === 'party') {
                 $acaraData = [
@@ -116,11 +117,11 @@ class Acara extends BaseController
                 ];
                 $this->db->table('party')->insert($partyData);
                 if ($this->db->affectedRows() > 0) {
-                    return redirect()->to(site_url('acara'))->with('success', 'Data Berhasil Disimpan');
+                    return redirect()->to(site_url('user/acara'))->with('success', 'Data Berhasil Disimpan');
                 }
             }
         }
-        return redirect()->to(site_url('acara'))->with('error', 'Test masih dalam pengembangan');
+        return redirect()->to(site_url('user/acara'))->with('error', 'Test masih dalam pengembangan');
     }
 
     public function edit($id = null)
@@ -133,9 +134,10 @@ class Acara extends BaseController
                 ->get();
             if ($query->resultID->num_rows > 0) {
                 $data['title'] = 'Acara';
+                $data['idacara'] = $id;
                 $data['acara'] = $query->getRow();
-                return view('acara/edit', $data);
                 // print_r($data);
+                return view('acara/edit', $data);
             } else {
                 throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
             }
@@ -171,14 +173,15 @@ class Acara extends BaseController
         $data = $this->request->getPost();
         // $id = $data['id_acara'];
         $jenisAcaraBaru = $this->request->getVar('icon-input');
-        $jenisAcaraSebelumnya = $this->db->table('acara')->select('jenis_acara')->where('id_acara', $id)->get()->getRow()->jenis_acara;
-    //    print_r($data);
-    //     print_r($jenisAcaraBaru);
-    //     print_r($jenisAcaraSebelumnya);
-        if ($jenisAcaraBaru !== $jenisAcaraSebelumnya) {
-            if ($jenisAcaraSebelumnya === 'nikah') {
+        $jenisAcaraSebelumnya = $this->db->table('acara')->select('jenis_acara')->where('id_acara', $id)->get()->getRow();
+
+        //    print_r($data);
+        // print_r($jenisAcaraBaru);exit;
+        // print_r($jenisAcaraSebelumnya->jenis_acara);exit;  
+        if ($jenisAcaraBaru !== $jenisAcaraSebelumnya->jenis_acara) {
+            if ($jenisAcaraSebelumnya->jenis_acara === 'nikah') {
                 $this->db->table('nikah')->where(['id_acara' => $id])->delete();
-            } elseif ($jenisAcaraSebelumnya === 'party') {
+            } elseif ($jenisAcaraSebelumnya->jenis_acara === 'party') {
                 $this->db->table('party')->where(['id_acara' => $id])->delete();
             }
         }
@@ -190,10 +193,14 @@ class Acara extends BaseController
                 'nama_wanita' => $this->request->getVar('nama_wanita'),
                 // tambahkan atribut-atribut lain yang diperlukan
             ];
-
-            $this->db->table('nikah')->insert($nikahData);
-            if ($this->db->affectedRows() === 0) {
-                return redirect()->back()->withInput()->with('errors', $this->db->table('nikah')->errors());
+            // print_r($nikahData);
+            if ($jenisAcaraBaru !== $jenisAcaraSebelumnya->jenis_acara) {
+                $this->db->table('nikah')->insert($nikahData);
+                if ($this->db->affectedRows() === 0) {
+                    return redirect()->back()->withInput()->with('errors', $this->db->table('nikah')->errors());
+                }
+            } else {
+                $this->db->table('nikah')->where('id_acara', $id)->update($nikahData);
             }
         } elseif ($jenisAcaraBaru === 'party') {
             $partyData = [
@@ -203,9 +210,13 @@ class Acara extends BaseController
                 // tambahkan atribut-atribut lain yang diperlukan
             ];
 
-            $this->db->table('party')->insert($partyData);
-            if ($this->db->affectedRows() === 0) {
-                return redirect()->back()->withInput()->with('errors', $this->db->table('party')->errors());
+            if ($jenisAcaraBaru !== $jenisAcaraSebelumnya->jenis_acara) {
+                $this->db->table('party')->insert($partyData);
+                if ($this->db->affectedRows() === 0) {
+                    return redirect()->back()->withInput()->with('errors', $this->db->table('nikah')->errors());
+                }
+            } else {
+                $this->db->table('party')->where('id_acara', $id)->update($partyData);
             }
         }
         $acaraData = [
@@ -219,12 +230,12 @@ class Acara extends BaseController
         if (!$this->db->table('acara')->where('id_acara', $id)->update($acaraData)) {
             return redirect()->back()->withInput()->with('errors', $this->db->table('acara')->errors());
         }
-        return redirect()->to(site_url('acara'))->with('success', 'Data Berhasil Disimpan');
+        return redirect()->to(site_url('user/acara'))->with('success', 'Data Berhasil Disimpan');
     }
 
     public function destroy($id)
     {
         $this->db->table('acara')->where(['id_acara' => $id])->delete();
-        return redirect()->to(site_url('acara'))->with('success', 'Data Berhasil Dihapus');
+        return redirect()->to(site_url('user/acara'))->with('success', 'Data Berhasil Dihapus');
     }
 }

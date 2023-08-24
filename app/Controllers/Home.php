@@ -8,21 +8,29 @@ use App\Models\KlaimHadiahModel;
 use App\Models\ProdukModel;
 use App\Models\ProdukReservasiModel;
 use App\Models\ReservasiModel;
+use App\Models\BlogModel;
 use Config\Database;
 
 class Home extends BaseController
 {
-    protected $reservasi, $db;
+    protected $reservasi,$blog, $db;
 
     public function __construct()
     {
         $this->reservasi = new ReservasiModel();
+        $this->blog = new BlogModel();
         $this->db = Database::connect();
     }
 
     public function index()
     {
+       
         $data['title'] = 'Official Website';
+        $data['blog'] = $this->blog
+        ->select('judul, thumbnail, created_at')
+        ->orderBy('created_at', 'DESC')
+        ->findAll(3); 
+        // print_r($data['blog']);
         return view('pages/index', $data);
     }
 

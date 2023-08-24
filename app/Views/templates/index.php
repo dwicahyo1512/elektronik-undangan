@@ -5,7 +5,7 @@
      <meta charset="UTF-8">
      <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
      <title>E_Undangan <?= '| ' . $title; ?></title>
-     <link rel="icon" href="<?= base_url(); ?>/template/assets/img/institusi.png" type="image/png">
+     <link rel="stylesheet" href=" <?= base_url(); ?>favicon.ico" rel="icon" />
 
      <!-- General CSS Files -->
      <link rel="stylesheet" href="<?= base_url() ?>/template/node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -82,7 +82,8 @@
      </script>
 </head>
 <!-- inibanh cobalah -->
-   <body>
+
+<body>
      <div id="app">
           <div class="main-wrapper main-wrapper-1">
                <!-- Top Bar -->

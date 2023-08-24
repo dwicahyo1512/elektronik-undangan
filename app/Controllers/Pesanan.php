@@ -57,7 +57,8 @@ class Pesanan extends ResourcePresenter
             ->join('hadiah', 'hadiah.id_hadiah = reservasi.hadiah_id', 'left')
             ->where('id_reservasi', $id_reservasi)
             ->first();
-
+        // print_r($data);
+        // die;
         $builder = $this->db->table('produk_reservasi as pr')->select('pr.*, pd.nama_produk, pd.harga as harga_produk, r.potongan_harga, r.total_bayar')
             ->join('reservasi as r', 'r.id_reservasi = pr.reservasi_id')
             ->join('produk as pd', 'pd.id_produk = pr.produk_id')

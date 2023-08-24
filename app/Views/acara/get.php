@@ -56,7 +56,7 @@
                                                 <td><?= $value->info_acara; ?></td>
                                                 <td><?= $value->jenis_acara; ?></td>
                                                 <td>
-                                                    <a href="<?= site_url('acara/edit/' . $value->id_acara) ?>" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
+                                                    <a href="<?= site_url('user/acara/' . $value->id_acara) ?>" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
                                                     <form action="<?= site_url('user/acara/' . $value->id_acara) ?>" method="post" class="d-inline" id="del-<?= $value->id_acara ?>">
                                                         <?= csrf_field() ?>
                                                         <input type="hidden" name="_method" value="DELETE">

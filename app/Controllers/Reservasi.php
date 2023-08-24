@@ -143,7 +143,7 @@ class Reservasi extends ResourcePresenter
                     'qty' => $qtys,
                     'subtotal' => $subtotals[$i]
                 );
-
+// print_r($datas[$i]);
                 if (!$produkReservasiModel->save($datas[$i])) {
                     return redirect()->back()->withInput()->with('errors', $produkReservasiModel->errors());
                 }
@@ -172,6 +172,10 @@ class Reservasi extends ResourcePresenter
             }
             // echo '<pre>';
             // print_r($potongan_harga);
+            // die;
+
+            // echo '<pre>';
+            // print_r($reservasi_id);
             // die;
 
             $allowUpdate = [

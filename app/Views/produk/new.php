@@ -112,7 +112,7 @@
                                                        </div>
                                                   <?php endif ?>
                                                   <br>
-                                                  <img id="preview_foto_produk" src="<?= base_url(); ?>/assets/img/news/img01.jpg" alt="foto_produk image" width="250" />
+                                                  <img id="preview_foto_produk" src="<?= base_url(); ?>template/assets/img/news/img01.jpg" alt="foto_produk image" width="250" />
                                              </div>
                                         </div>
                                    </div>

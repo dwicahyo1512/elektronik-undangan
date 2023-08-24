@@ -95,14 +95,7 @@
                                         <div class="col-lg-8">
                                              <div class="section-title">Metode Pembayaran</div>
                                              <p class="section-lead">Metode pembayaran yang kami berikan adalah untuk memudahkan Anda membayar tagihan.</p>
-                                             <div class="images">
-                                                  <img src="<?= base_url(); ?>/assets/img/bri.png" alt="bri" width="55px">
-                                                  <b>&ensp; 020801014929533</b>
-                                             </div>
-                                             <div class="images mt-2">
-                                                  <img src="<?= base_url(); ?>/assets/img/bca.png" alt="bca" width="55px">
-                                                  <b>&ensp; 8955342581</b>
-                                             </div>
+                                             
                                         </div>
                                         <div class="col-lg-4 text-right">
                                              <?php if ($reservasi['hadiah_id'] !== null) : ?>

@@ -43,6 +43,8 @@ $routes->get('create-db', function () {
 });
 
 $routes->get('/', 'Home::index', ['as' => 'landingpage']);
+$routes->get('blog', 'Blog::blogHome', ['as' => 'landingpageHome']);
+$routes->get('blog_single/(:num)', 'Blog::singleBlogHome/$1',['as' => 'blog_single']);
 $routes->get('reservasi_sekarang', 'Home::order', ['as' => 'order']);
 $routes->post('simpan_reservasi_sekarang', 'Home::save_order', ['as' => 'save_order']);
 $routes->get('galeri_sw', 'Home::galeri_sw', ['as' => 'galeri_sw']);
@@ -93,7 +95,7 @@ $routes->group('user', static function ($routes) {
     $routes->delete('grps/delete2/(:any)', 'grps::delete2/$1');
     $routes->delete('grps/delete2', 'grps::delete2');
     $routes->presenter('grps', ['controller' => 'Grps']);
-   // UNDANGAN
+    // UNDANGAN
     $routes->get('undangan/export', 'Undangan::export', ['filter' => 'isLoggedIn']);
     $routes->post('undangan/import', 'Undangan::import', ['filter' => 'isLoggedIn']);
     $routes->resource('undangan', ['controller' => 'undangan']);
@@ -103,7 +105,7 @@ $routes->group('user', static function ($routes) {
     $routes->post('acara/step2', 'Acara::step2');
     $routes->post('acara/step3', 'Acara::step3');
     $routes->post('acara', 'Acara::store');
-    $routes->get('acara/edit/(:any)', 'Acara::edit/$1');
+    $routes->get('acara/(:num)', 'Acara::edit/$1');
     $routes->put('acara/(:any)', 'Acara::update/$1');
     $routes->delete('acara/(:segment)', 'Acara::destroy/$1');
 });

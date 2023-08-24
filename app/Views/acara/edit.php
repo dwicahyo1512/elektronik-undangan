@@ -15,7 +15,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="<?= site_url('user/acara/' . $acara->id_acara) ?>" method="post" autocomplete="off" novalidate="">
+                            <form action="<?= site_url('user/acara/' . $idacara) ?>" method="post" autocomplete="off" novalidate="">
                                 <?= csrf_field() ?>
                                 <input type="hidden" name="_method" value="PUT">
                                 <div class="card-header">

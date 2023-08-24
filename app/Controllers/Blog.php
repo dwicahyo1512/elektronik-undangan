@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\BlogModel;
 use App\Models\BlogTagsModel;
 use App\Models\TagModel;
+use App\Models\KategoriModel;
 use CodeIgniter\RESTful\ResourcePresenter;
 use Config\Database;
 
@@ -22,6 +23,57 @@ class Blog extends ResourcePresenter
      *
      * @return mixed
      */
+
+    public function blogHome()
+    {
+        $tag = new TagModel();
+        $kategori = new KategoriModel();
+        $data['blog'] = $this->blog->orderBy('created_at', 'DESC')->findAll();
+        $data['recent'] = $this->blog->select('judul,thumbnail,created_at') // Pilih kolom judul dan created_at
+            ->orderBy('created_at', 'DESC')
+            ->findAll(5);
+        $data['tag'] = $tag->findAll();
+        $data['kategori'] = $kategori->findAll();
+        // print_r($data);
+        return view('pages/blog', $data);
+    }
+
+    public function singleBlogHome($id_blog = null)
+    {
+        $tagModel = new TagModel();
+        $kategori = new KategoriModel();
+        $data['tagOption'] = $tagModel->findAll();
+        $data['blog'] = $this->blog->where('id_blog', $id_blog)->first();
+        $builder = $this->db->table('blog_tags as bt')->select('bt.tag_id')
+        ->join('tag as tg', 'tg.id_tag = bt.tag_id')
+        ->where('bt.blog_id', $id_blog)
+        ->get();
+        $tag_id = $builder->getResultArray();
+        foreach ($tag_id as $t) {
+            $data['tag'][] = $t['tag_id'];
+        }
+        $data['title'] = isset($data['blog']['judul']) ? $data['blog']['judul'] : 'E_Undangan';
+        $data['recent'] = $this->blog->select('id_blog,judul,thumbnail,created_at') // Pilih kolom judul dan created_at
+        ->orderBy('created_at', 'DESC')
+        ->findAll(5);
+        $data['kategori'] = $kategori->findAll();
+
+
+        // $data['title'] = 'Edit Blog';
+        // $data['tagOption'] = $tagModel->findAll();
+        // $data['blog'] = $this->blog->where('id_blog', $id_blog)->first();
+        // $builder = $this->db->table('blog_tags as bt')->select('bt.tag_id')
+        // ->join('tag as tg', 'tg.id_tag = bt.tag_id')
+        // ->where('bt.blog_id', $id_blog)
+        // ->get();
+        // $tag_id = $builder->getResultArray();
+        // foreach ($tag_id as $t) {
+        //     $data['tag'][] = $t['tag_id'];
+        // }
+        print_r($data);
+        return view('pages/blog-single', $data);
+    }
+
     public function index()
     {
         $data['title'] = 'Blog';
@@ -31,7 +83,7 @@ class Blog extends ResourcePresenter
             ->join('tag as tg', 'tg.id_tag = bt.tag_id')
             ->get();
         $data['tag'] = $builder->getResult();
-
+        // print_r($data['tag']);
         return view('blog/index', $data);
     }
 

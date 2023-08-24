@@ -53,10 +53,10 @@
             <a class="nav-link scrollto" href="#portfolio">Portfolio</a>
           </li>
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li><a href="blog.html">Blog</a></li>
+          <li><a href="<?= base_url('blog'); ?>">Blog</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
           <li>
-            <a class="getstarted scrollto" href="<?= base_url('login'); ?>">Get Started</a>
+            <a class="getstarted scrollto" href="<?= base_url('superadmin/dashboard'); ?>">Get Started</a>
           </li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -79,7 +79,7 @@
           </h2>
           <div data-aos="fade-up" data-aos-delay="600">
             <div class="text-center text-lg-start">
-              <a href="<?= base_url('login'); ?>" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+              <a href="<?= base_url('superadmin/dashboard'); ?>" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
                 <span>Get Started</span>
                 <i class="bi bi-arrow-right"></i>
               </a>
@@ -605,45 +605,24 @@
         </header>
 
         <div class="row">
-          <div class="col-lg-4">
-            <div class="post-box">
-              <div class="post-img">
-                <img src="<?= base_url(); ?>assets/img/blog/blog-1.jpg" class="img-fluid" alt="" />
+          <?php foreach ($blog as $item) { ?>
+            <div class="col-lg-4">
+              <div class="post-box">
+                <div class="post-img">
+                  <img src="<?= base_url('images/thumbnail/' . $item['thumbnail']); ?>" class="img-fluid" alt="" />
+                </div>
+                <?php
+                $createdAt = strtotime($item['created_at']); // Konversi string tanggal ke UNIX timestamp
+                $formattedDate = date('D, F j', $createdAt); // Format tanggal menjadi 'Tue, September 15'
+                echo $formattedDate; // Tampilkan tanggal yang sudah diformat
+                ?>
+                <h3 class="post-title">
+                  <?= $item['judul']; ?>
+                </h3>
+                <a href="<?= base_url('blog'); ?>" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
               </div>
-              <span class="post-date">Tue, September 15</span>
-              <h3 class="post-title">
-                Eum ad dolor et. Autem aut fugiat debitis voluptatem
-                consequuntur sit
-              </h3>
-              <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
             </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="post-box">
-              <div class="post-img">
-                <img src="<?= base_url(); ?>assets/img/blog/blog-2.jpg" class="img-fluid" alt="" />
-              </div>
-              <span class="post-date">Fri, August 28</span>
-              <h3 class="post-title">
-                Et repellendus molestiae qui est sed omnis voluptates magnam
-              </h3>
-              <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="post-box">
-              <div class="post-img">
-                <img src="<?= base_url(); ?>assets/img/blog/blog-3.jpg" class="img-fluid" alt="" />
-              </div>
-              <span class="post-date">Mon, July 11</span>
-              <h3 class="post-title">
-                Quia assumenda est et veritatis aut quae
-              </h3>
-              <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
+          <?php } ?>
         </div>
       </div>
     </section>

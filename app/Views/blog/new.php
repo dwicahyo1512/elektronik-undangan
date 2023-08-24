@@ -49,7 +49,7 @@
                                         <div class="form-group row">
                                              <label for="judul" class="col-sm-3 col-form-label">Judul</label>
                                              <div class="col-sm-9">
-                                                  <input type="text" class="form-control <?php if (session('errors.judul')) : ?>is-invalid<?php endif ?>" name="judul" id="judul" placeholder="Paesan">
+                                                  <input type="text" class="form-control <?php if (session('errors.judul')) : ?>is-invalid<?php endif ?>" name="judul" id="judul" placeholder="Judul Blog">
                                                   <?php if (session('errors.judul')) : ?>
                                                        <div class="invalid-feedback">
                                                             <?= session('errors.judul') ?>
@@ -60,7 +60,7 @@
                                         <div class="form-group row">
                                              <label for="deskripsi_singkat" class="col-sm-3 col-form-label">Deskripsi Singkat</label>
                                              <div class="col-sm-9">
-                                                  <input type="text" class="form-control <?php if (session('errors.deskripsi_singkat')) : ?>is-invalid<?php endif ?>" name="deskripsi_singkat" id="deskripsi_singkat" placeholder="Membahas riasan pengantin jawa">
+                                                  <input type="text" class="form-control <?php if (session('errors.deskripsi_singkat')) : ?>is-invalid<?php endif ?>" name="deskripsi_singkat" id="deskripsi_singkat" placeholder="Isi Deskripsi">
                                                   <?php if (session('errors.deskripsi_singkat')) : ?>
                                                        <div class="invalid-feedback">
                                                             <?= session('errors.deskripsi_singkat') ?>
@@ -109,7 +109,7 @@
                                                        </div>
                                                   <?php endif ?>
                                                   <br>
-                                                  <img id="preview_thumbnail" src="<?= base_url(); ?>/assets/img/news/img01.jpg" alt="thumbnail image" width="250" />
+                                                  <img id="preview_thumbnail" src="<?= base_url(); ?>/template/assets/img/news/img01.jpg" alt="thumbnail image" width="250" />
                                              </div>
                                         </div>
                                    </div>
