@@ -7,7 +7,7 @@
 - [dwicahyo1512](https://github.com/dwicahyo1512)
 
 
-# E - Undangan
+# E - Undangan (ON PROGRESS NOT COMPLETE)
 
 E-undangan sebagai platform inovatif yang memungkinkan pengguna untuk dengan mudah membuat undangan pernikahan, ulang tahun, atau acara istimewa lainnya dalam bentuk elektronik. Repositori ini berisi kode sumber dari aplikasi E-undangan yang saya kembangkan dengan menggunakan framework PHP CodeIgniter 4 sebagai dasar pengembangan.
 
